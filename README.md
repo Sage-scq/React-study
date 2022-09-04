@@ -1,4 +1,4 @@
-# react 学习案例合集
+# react 学习案例合集 by scq
 
 # Getting Started with Create React App
 
