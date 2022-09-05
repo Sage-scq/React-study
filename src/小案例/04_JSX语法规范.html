@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .title {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="test"></div>
+    <script type="text/babel">
+      const myId = "scq";
+      const myData = "Hello,react";
+      // 1.标签内使用表达式使用{}
+      // 2.样式的类名指定使用className
+      // 3.内联样式类似于vue
+      // 4.只能有一个根标签
+      // 5.标签必须闭合
+      const vDom = (
+        <div>
+          <h1 id={myId} className="title">
+            <span style={{ color: "white" }}>{myData}</span>
+          </h1>
+          <h1 id={myId} className="title">
+            <span style={{ color: "white" }}>{myData}</span>
+          </h1>
+          <input type="text" />
+        </div>
+      );
+      ReactDOM.render(vDom, document.getElementById("test"));
+    </script>
+  </body>
+</html>

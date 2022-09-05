@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="test"></div>
+    <script type="text/babel">
+      // 1.jsx循环渲染中只能循环数组
+      // 2.每一个循环的节点需要一个key
+      const arr = ["scq", "sss", "qqq"];
+      const vDom = (
+        <ul>
+          {arr.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+      );
+      ReactDOM.render(vDom, document.getElementById("test"));
+    </script>
+  </body>
+</html>
