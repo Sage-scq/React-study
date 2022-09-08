@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <div id="test"></div>
+  <script type="text/babel">
+    // 1.创建类式组件
+    class MyComponent extends React.Component {
+      // state状态，类似于vue的data，有state就是复杂组件
+      // 注意，构造器只在react自动创建实例的时候调用一次
+      constructor(props) {
+        super(props);
+        // 初始化状态
+        this.state = {
+          isHot: true,
+        };
+      }
+      // 注意，render每次重新渲染都会调用一次
+      render() {
+        return (
+          <h2 onClick={this.changeIsHot.bind(this)}>
+            今天天气很{this.state.isHot ? "炎热" : "寒冷"}
+          </h2>
+        );
+      }
+      // 这个函数如果写changeIsHot(){}，作为onclick的回调那么调用是直接调用而不是用实例调用，会丢失this！！！
+      changeIsHot() {
+        // 修改state的值 必须使用setState函数！
+        // 该函数为merge而不是替换，放心用（还算有人性）
+        this.setState({ isHot: !this.state.isHot }, () => {
+          console.log(this.state.isHot);
+        });
+      };
+    }
+    // 2.渲染组件到页面
+    ReactDOM.render(<MyComponent />, document.getElementById("test"));
+  </script>
+</body>
+
+</html>
