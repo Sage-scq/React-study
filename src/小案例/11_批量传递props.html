@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="test"></div>
+    <script type="text/babel">
+        class Person extends React.Component {
+            render() {
+                return (
+                    <ul>
+                        <li>姓名:{this.props.name}</li>
+                        <li>性别:{this.props.sex}</li>
+                        <li>年龄:{this.props.age}</li>
+                    </ul>
+                )
+            }
+        }
+        const info = { name: 'tom', sex: '男', age: '18' }
+        ReactDOM.render(<Person  {...info} />, document.getElementById("test"))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="test"></div>
+    <script type="text/babel">
+        // 1.创建函数式组件
+        // 函数式组件使用props利用传参的方式
+        const Demo = (props) => {
+            console.log(props);
+            return <h2>我是函数式组件名为{props.name}</h2>;
+        };
+        // 2.渲染组件到页面
+        ReactDOM.render(<Demo name='scq' />, document.getElementById("test"));
+    </script>
+</body>
+
+</html>
