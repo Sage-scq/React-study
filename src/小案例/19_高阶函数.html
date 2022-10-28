@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <div id="test"></div>
     <script type="text/babel">
-        // 1.创建类式组件
-        class MyComponent extends React.Component {
-            state = {
-                username: '',
-                password: ''
-            }
-            render() {
-                return (
-                    <div>
-                        <form action="#" onSubmit={this.handleSubmit}>
-                            <span>用户名：</span>
-                            <input type="text" onChange={this.saveInfo('username')} />
-                            <span>密码</span>
-                            <input type="password" onChange={this.saveInfo('password')} />
-                            <button >登录</button>
-                        </form>
-                    </div>
-                )
-            }
-            // 这里就运用了高阶函数以及函数的柯里化
-            saveInfo = (type) => {
-                return (e) => {
-                    this.setState({ [type]: e.target.value })
-                }
-            }
-            handleSubmit = (e) => {
-                e.preventDefault(); // 阻止提交自动刷新
-                alert(`用户名${this.state.username},密码${this.state.password}`)
-            }
-
+      // 1.创建类式组件
+      class MyComponent extends React.Component {
+        state = {
+          username: '',
+          password: ''
         }
-        ReactDOM.render(<MyComponent />, document.getElementById("test"));
+        render() {
+          return (
+            <div>
+              <form action="#" onSubmit={this.handleSubmit}>
+                <span>用户名：</span>
+                <input type="text" onChange={this.saveInfo('username')} />
+                <span>密码</span>
+                <input type="password" onChange={this.saveInfo('password')} />
+                <button>登录</button>
+              </form>
+            </div>
+          )
+        }
+        // 这里就运用了高阶函数以及函数的柯里化
+        saveInfo = type => {
+          return e => {
+            this.setState({ [type]: e.target.value })
+          }
+        }
+        handleSubmit = e => {
+          e.preventDefault() // 阻止提交自动刷新
+          alert(`用户名${this.state.username},密码${this.state.password}`)
+        }
+      }
+      ReactDOM.render(<MyComponent />, document.getElementById('test'))
     </script>
-</body>
-
+  </body>
 </html>
