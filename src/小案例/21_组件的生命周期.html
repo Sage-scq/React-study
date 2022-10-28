@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <div id="test"></div>
+    <script type="text/babel">
+      const Demo = class extends React.Component {
+        state = {
+          opacity: 0.3,
+          timer: 0
+        }
+
+        // 挂载对象（类似于mounted）挂载后调用，只调用一次
+        componentDidMount() {
+          let timer = setInterval(() => {
+            let { opacity } = this.state
+            opacity -= 0.1
+            if (opacity <= 0) {
+              opacity = 1
+            }
+            this.setState({ opacity })
+          }, 200)
+          this.setState({ timer })
+        }
+
+        // beforeUnMount
+        componentWillUnmount() {
+          // 取消状态更新
+          clearInterval(this.state.timer)
+        }
+
+        death = () => {
+          // 卸载组件
+          ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+
+        render() {
+          return (
+            <div>
+              <h1 style={{ opacity: this.state.opacity }}>我在变化</h1>
+              <button onClick={this.death}>点我干掉组件</button>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+  </body>
+</html>
