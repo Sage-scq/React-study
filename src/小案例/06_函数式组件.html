@@ -14,11 +14,11 @@
     <script type="text/babel">
       // 1.创建函数式组件
       const Demo = () => {
-        console.log(this); // 此处this为undefined因为babel开启了严格模式不允许指向window
-        return <h2>我是函数式组件</h2>;
-      };
+        console.log(this) // 此处this为undefined因为babel开启了严格模式不允许指向window
+        return <h2>我是函数式组件</h2>
+      }
       // 2.渲染组件到页面
-      ReactDOM.render(<Demo />, document.getElementById("test"));
+      ReactDOM.render(<Demo />, document.getElementById('test'))
     </script>
   </body>
 </html>

@@ -23,12 +23,12 @@
         componentDidMount() {
           let timer = setInterval(() => {
             let { opacity } = this.state
-            opacity -= 0.1
+            opacity -= 0.02
             if (opacity <= 0) {
               opacity = 1
             }
             this.setState({ opacity })
-          }, 200)
+          }, 20)
           this.setState({ timer })
         }
 
